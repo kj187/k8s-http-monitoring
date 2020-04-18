@@ -60,9 +60,9 @@ func (mon *Monitoring) MonitorIngresses() {
 
 	// TODO add generic headers, + add to docu
 	idpToken := os.Getenv("MONITORING_X_IDP_TOKEN")
-	if idpToken == "" {
-		fmt.Println("ENV MONITORING_X_IDP_TOKEN is not set")
-	}
+	//if idpToken == "" {
+	//	fmt.Println("ENV MONITORING_X_IDP_TOKEN is not set")
+	//}
 
 	for _, i := range kubernetes.Ingresses {
 		if _, ok := i.Annotations[ListenOnAnnotationKey]; ok == false {

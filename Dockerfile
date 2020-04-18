@@ -7,6 +7,6 @@ ADD http-monitoring /usr/bin/
 RUN chmod +x /usr/bin/http-monitoring
 ENV PATH $PATH:/usr/bin
 
-EXPOSE 1877
+EXPOSE 8080
 
 CMD ["/usr/bin/http-monitoring"]

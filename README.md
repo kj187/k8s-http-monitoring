@@ -61,7 +61,7 @@ spec:
 
 **Metrics Endpoint** 
 
-- Reachable for local development: `127.0.0.1:1877/metrics`
+- Reachable for local development: `127.0.0.1:8080/metrics`
 - Reachable inside cluster as service: `http-monitoring-metrics.k28s-infrastructure/metrics`
 
 ## Installing

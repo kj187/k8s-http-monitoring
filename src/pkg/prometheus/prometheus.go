@@ -9,7 +9,7 @@ import (
 )
 
 // DefaultMetricsPort ...
-const DefaultMetricsPort = "1877"
+const DefaultMetricsPort = "8080"
 
 var (
 	// ProbeSuccess ...
