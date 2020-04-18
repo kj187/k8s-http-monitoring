@@ -159,6 +159,6 @@ func (mon *Monitoring) executeRequest(input requestInput) error {
 	prometheus.ProbeDurationSeconds.WithLabelValues(input.name, input.namespace, input.networkType, input.url).Set(durationSeconds)
 	prometheus.ProbeLastExecutionTime.WithLabelValues(input.name, input.namespace, input.networkType, input.url).SetToCurrentTime()
 
-	fmt.Printf("[%v][%v] %v\n", input.networkType, r.StatusCode, input.url)
+	fmt.Printf("[%v][%v][%v][%v] %v\n", float64(time.Now().UnixNano()) / 1e9, input.networkType, durationSeconds, r.StatusCode, input.url)
 	return nil
 }
