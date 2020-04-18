@@ -24,7 +24,7 @@ MONITORING_INTERVAL_SECONDS # default is 30 seconds
 
 **Metrics**
 
-The following metrics have all these lables available: `monitor_app`, `monitor_namespace`, `om3_cloud_maintainer`, `monitor_network`, `monitor_url`
+The following metrics have all these lables available: `monitor_app`, `monitor_namespace`, `monitor_network`, `monitor_url`
 
 ```bash
 http_monitoring_probe_success           # 1 = success, 0 = failed
@@ -53,7 +53,6 @@ spec:
       expr: http_monitoring_last_execution_time < (time()-86400)
       labels:
         severity: high
-        om3_cloud_maintainer: 'team-pet'
       annotations:
         summary: "HTTP monitoring checks are older than 1 day!"
         urgency: high

@@ -23,7 +23,6 @@ type (
 		url         string
 		name        string
 		namespace   string
-		maintainer  string
 		headers     []map[string]string
 	}
 )
@@ -77,7 +76,6 @@ func (mon *Monitoring) MonitorIngresses() {
 			networkType: "ingress",
 			name:        i.Name,
 			namespace:   i.Namespace,
-			maintainer:  i.Labels["om3.cloud/maintainer"],
 			headers:     requestHeaders,
 		}
 		for paths.Scan() {
@@ -110,7 +108,6 @@ func (mon *Monitoring) MonitorServices() {
 			networkType: "service",
 			name:        i.Name,
 			namespace:   i.Namespace,
-			maintainer:  i.Labels["om3.cloud/maintainer"],
 			headers:     requestHeaders,
 		}
 		paths := bufio.NewScanner(strings.NewReader(i.Annotations[ListenOnAnnotationKey]))
@@ -157,10 +154,10 @@ func (mon *Monitoring) executeRequest(input requestInput) error {
 		success = float64(0)
 	}
 
-	prometheus.ProbeSuccess.WithLabelValues(input.name, input.namespace, input.maintainer, input.networkType, input.url).Set(success)
-	prometheus.ProbeStatusCode.WithLabelValues(input.name, input.namespace, input.maintainer, input.networkType, input.url).Set(float64(r.StatusCode))
-	prometheus.ProbeDurationSeconds.WithLabelValues(input.name, input.namespace, input.maintainer, input.networkType, input.url).Set(durationSeconds)
-	prometheus.ProbeLastExecutionTime.WithLabelValues(input.name, input.namespace, input.maintainer, input.networkType, input.url).SetToCurrentTime()
+	prometheus.ProbeSuccess.WithLabelValues(input.name, input.namespace, input.networkType, input.url).Set(success)
+	prometheus.ProbeStatusCode.WithLabelValues(input.name, input.namespace, input.networkType, input.url).Set(float64(r.StatusCode))
+	prometheus.ProbeDurationSeconds.WithLabelValues(input.name, input.namespace, input.networkType, input.url).Set(durationSeconds)
+	prometheus.ProbeLastExecutionTime.WithLabelValues(input.name, input.namespace, input.networkType, input.url).SetToCurrentTime()
 
 	//fmt.Printf("[%v][%v] %v\n", input.networkType, r.StatusCode, input.url)
 	return nil

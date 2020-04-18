@@ -13,16 +13,16 @@ const DefaultMetricsPort = "8080"
 
 var (
 	// ProbeSuccess ...
-	ProbeSuccess = prometheus.NewGaugeVec(prometheus.GaugeOpts{Name: "http_monitoring_probe_success"}, []string{"monitor_app", "monitor_namespace", "om3_cloud_maintainer", "monitor_network", "monitor_url"})
+	ProbeSuccess = prometheus.NewGaugeVec(prometheus.GaugeOpts{Name: "http_monitoring_probe_success"}, []string{"monitor_app", "monitor_namespace", "monitor_network", "monitor_url"})
 
 	// ProbeStatusCode ...
-	ProbeStatusCode = prometheus.NewGaugeVec(prometheus.GaugeOpts{Name: "http_monitoring_probe_status_code"}, []string{"monitor_app", "monitor_namespace", "om3_cloud_maintainer", "monitor_network", "monitor_url"})
+	ProbeStatusCode = prometheus.NewGaugeVec(prometheus.GaugeOpts{Name: "http_monitoring_probe_status_code"}, []string{"monitor_app", "monitor_namespace", "monitor_network", "monitor_url"})
 
 	// ProbeDurationSeconds ...
-	ProbeDurationSeconds = prometheus.NewGaugeVec(prometheus.GaugeOpts{Name: "http_monitoring_probe_duration_seconds"}, []string{"monitor_app", "monitor_namespace", "om3_cloud_maintainer", "monitor_network", "monitor_url"})
+	ProbeDurationSeconds = prometheus.NewGaugeVec(prometheus.GaugeOpts{Name: "http_monitoring_probe_duration_seconds"}, []string{"monitor_app", "monitor_namespace", "monitor_network", "monitor_url"})
 
 	// ProbeLastExecutionTime ...
-	ProbeLastExecutionTime = prometheus.NewGaugeVec(prometheus.GaugeOpts{Name: "http_monitoring_last_execution_time"}, []string{"monitor_app", "monitor_namespace", "om3_cloud_maintainer", "monitor_network", "monitor_url"})
+	ProbeLastExecutionTime = prometheus.NewGaugeVec(prometheus.GaugeOpts{Name: "http_monitoring_last_execution_time"}, []string{"monitor_app", "monitor_namespace", "monitor_network", "monitor_url"})
 )
 
 // Prometheus Struct
