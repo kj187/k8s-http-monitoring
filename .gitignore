@@ -1,0 +1,6 @@
+.DS_Store
+.cache
+.idea
+.temp
+/vendor
+http-monitoring

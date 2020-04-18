@@ -1,0 +1,43 @@
+name: pipeline
+
+on:
+  push:
+    branches: [ master ]
+    tags: [ "*" ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  GO111MODULE: on
+
+jobs:
+  lint:
+    name: Go Lint
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/setup-go@v1
+        with:
+          go-version: 1.13
+      - uses: actions/checkout@v2
+      - name: Lint Go Code
+        run: make lint
+          
+  build:
+    name: Build
+    needs: lint
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/setup-go@v1
+      with:
+        go-version: 1.13
+    - uses: actions/checkout@v2 
+    - name: Get dependencies   
+      run: GO111MODULE=$GO111MODULE go mod vendor
+    - name: Go Build
+      run: make go_build
+    - name: Docker Build
+      run: make docker_build REPOSITORY="${{ github.repository }}"
+    - name: Log into registry
+      run: make dockerhub_login DOCKER_REGISTRY_PASSWORD="${{ secrets.DOCKER_REGISTRY_PASSWORD }}" DOCKER_REGISTRY_ACTOR="${{ github.actor }}"
+    - name: Push image
+      run: make docker_push REPOSITORY="${{ github.repository }}" REF="${{ github.ref }}"
