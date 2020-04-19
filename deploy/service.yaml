@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: http-monitoring
+  labels:
+    app.kubernetes.io/name: http-monitoring
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /metrics
+    prometheus.io/port: "8080"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort:
+      protocol: TCP
+      name: metrics
+  selector:
+    app.kubernetes.io/name: http-monitoring

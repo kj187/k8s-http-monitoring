@@ -58,7 +58,7 @@ func (mon *Monitoring) MonitorIngresses() {
 	var requestHeaders []map[string]string
 
 	// TODO add generic headers, + add to docu
-	idpToken := os.Getenv("MONITORING_X_IDP_TOKEN")
+	//idpToken := os.Getenv("MONITORING_X_IDP_TOKEN")
 	//if idpToken == "" {
 	//	fmt.Println("ENV MONITORING_X_IDP_TOKEN is not set")
 	//}
@@ -69,9 +69,9 @@ func (mon *Monitoring) MonitorIngresses() {
 		}
 		host := i.Spec.Rules[0].Host // We have just 1 rule in our project
 		paths := bufio.NewScanner(strings.NewReader(i.Annotations[ListenOnAnnotationKey]))
-		if i.Annotations["kubernetes.io/ingress.class"] != "public" { // use IDP token if ingress is not public
-			requestHeaders = append(requestHeaders, map[string]string{"X-Idp-Token": idpToken})
-		}
+		//if i.Annotations["kubernetes.io/ingress.class"] != "public" { // use IDP token if ingress is not public
+		//	requestHeaders = append(requestHeaders, map[string]string{"X-Idp-Token": idpToken})
+		//}
 		requestInput := requestInput{
 			networkType: "ingress",
 			name:        i.Name,
