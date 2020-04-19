@@ -1,6 +1,6 @@
 apiVersion: v2
 name: HTTP Monitoring
-description:
+description: Kubernetes Ingress and Service monitoring of HTTP/HTTPS requests
 home: https://github.com/kj187/http-monitoring
 type: application
 version: 1.0.0

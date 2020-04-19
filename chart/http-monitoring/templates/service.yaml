@@ -4,6 +4,10 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     {{- include "http-monitoring.labels" . | nindent 4 }}
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /metrics
+    prometheus.io/port: "8080"
 spec:
   type: {{ .Values.service.type }}
   ports:
