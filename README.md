@@ -1,6 +1,6 @@
 # HTTP Monitoring
 
-[![pipeline](https://github.com/kj187/http-monitoring/workflows/pipeline/badge.svg?branch=master)](https://github.com/kj187/http-monitoring/actions?query=workflow%3Apipeline)
+[![pipeline](https://github.com/kj187/k8s-http-monitoring/workflows/pipeline/badge.svg?branch=master)](https://github.com/kj187/k8s-http-monitoring/actions?query=workflow%3Apipeline)
 
 Kubernetes Ingress and Service monitoring of HTTP/HTTPS requests
 
@@ -13,7 +13,7 @@ Beside a success or fail status, this application exposed also the HTTP status c
 ### Installing via Helm Chart
 
 ```bash
-$ git clone https://github.com/kj187/http-monitoring.git
+$ git clone https://github.com/kj187/k8s-http-monitoring.git
 $ cd http-monitoring/chart
 $ helm upgrade --install http-monitoring ./http-monitoring
 ```
@@ -21,7 +21,7 @@ $ helm upgrade --install http-monitoring ./http-monitoring
 ### Installing via kubectl
 
 ```bash
-$ git clone https://github.com/kj187/http-monitoring.git
+$ git clone https://github.com/kj187/k8s-http-monitoring.git
 $ cd http-monitoring
 $ kubectl apply -f deploy/
 ```
